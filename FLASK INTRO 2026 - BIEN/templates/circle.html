@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Circle Area | Programming Works{% endblock %}
+
+{% block content %}
+<section class="tool-intro">
+    <p class="eyebrow">PROGRAMMING WORKS · GEOMETRY</p>
+    <h1>Area of a circle</h1>
+    <p class="lead">Enter a radius and calculate the area with the formula <strong>πr²</strong>.</p>
+</section>
+
+<section class="tool-layout">
+    <form class="tool-form content-card" action="{{ url_for('circle_area') }}" method="post">
+        <label for="radius">Radius</label>
+        <div class="input-with-suffix">
+            <input type="number" id="radius" name="radius" value="{{ radius }}" min="0" step="any" placeholder="e.g. 8" required autofocus>
+            <span>units</span>
+        </div>
+        <button class="button" type="submit">Calculate area</button>
+        {% if error %}<p class="form-message error" role="alert">{{ error }}</p>{% endif %}
+    </form>
+
+    <aside class="result-card" aria-live="polite">
+        <p>AREA</p>
+        {% if result is not none %}
+            <strong>{{ "{:.2f}".format(result) }}</strong><span>square units</span>
+        {% else %}
+            <strong>—</strong><span>Your answer appears here</span>
+        {% endif %}
+    </aside>
+</section>
+{% endblock %}

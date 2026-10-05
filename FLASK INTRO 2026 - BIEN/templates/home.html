@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}Home | Jebie's Portfolio{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <div class="hero-copy">
+        <p class="eyebrow">MY FLASK LAB PORTFOLIO</p>
+        <h1>HELLO THERE! Welcome to my portfolio!</h1>
+        <div class="hero-actions">
+            <a class="button" href="{{ url_for('profile') }}">get to know me :></a>
+            <a class="button button-ghost" href="{{ url_for('works') }}">my works :0</a>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="section-heading">
+        <p class="eyebrow">MY PROGRAMMING WORKS</p>
+        <h2>Try these tools!</h2>
+    </div>
+    <div class="project-grid">
+        <a class="project-card" href="{{ url_for('works') }}">
+            <span class="project-icon">Aa</span><h3>Text converter</h3>
+            <p>Convert any short phrase to uppercase with Flask.</p><span class="card-link">Open tool →</span>
+        </a>
+        <a class="project-card" href="{{ url_for('circle_area') }}">
+            <span class="project-icon">◯</span><h3>Circle area</h3>
+            <p>Calculate area from a radius using πr².</p><span class="card-link">Open tool →</span>
+        </a>
+        <a class="project-card" href="{{ url_for('triangle_area') }}">
+            <span class="project-icon">△</span><h3>Triangle area</h3>
+            <p>Calculate area from a triangle’s base and height.</p><span class="card-link">Open tool →</span>
+        </a>
+        <a class="project-card" href="{{ url_for('linked_list') }}">
+            <span class="project-icon">↔</span><h3>Linked-list lab</h3>
+            <p>Add, find, remove, and clear nodes visually.</p><span class="card-link">Open tool →</span>
+        </a>
+    </div>
+</section>
+{% endblock %}
+

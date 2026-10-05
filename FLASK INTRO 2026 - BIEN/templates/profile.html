@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}Profile | Jebie's Portfolio{% endblock %}
+
+{% block content %}
+<section class="profile-hero">
+    <div class="avatar" aria-hidden="true">J</div>
+    <div>
+        <p class="eyebrow">STUDENT PROFILE</p>
+        <h1>John Emmanuel Billones Bien</h1>
+        <p class="lead">Hello there! Im an Computer Engineering Student at PUP, an aspiring web developer and musician ٩(^ᗜ^ )و ´-</p>
+    </div>
+</section>
+
+<section class="profile-grid">
+    <article class="content-card about-card">
+        <h2>About me</h2>
+        <p>Im just a kid building stuff that i like and do things that needs to be done.</p>
+        <blockquote>“WORK HARD PLAY HARDER !!”</blockquote>
+    </article>
+    <aside class="content-card details-card">
+        <h2>Academic details</h2>
+        <dl>
+            <div><dt>Course</dt><dd>Computer Engineering</dd></div>
+            <div><dt>Section</dt><dd>BsCPE 2-1</dd></div>
+            <div><dt>Subject</dt><dd>Data Structures and Algorithms</dd></div>
+            <div><dt>Goals</dt><dd>To be happy...</dd></div>
+        </dl>
+    </aside>
+</section>
+
+<section class="section skills-section">
+    <p class="eyebrow">MY TOOLKIT</p>
+    <h2>what im currently trying to improve on...</h2>
+    <div class="tag-list" aria-label="Skills">
+        <span>Python</span><span>Flask</span><span>HTML</span><span>CSS</span><span>JavaScript</span><span>Linked Lists</span>
+    </div>
+</section>
+{% endblock %}
