@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %}Profile | Jebie's Portfolio{% endblock %}
+
+{% block content %}
+<section class="profile-card" aria-labelledby="profile-name">
+    <img class="profile-banner" src="{{ url_for('static', filename='images/webcam-toy-photo2.jpg') }}" alt="Profile banner">    
+    <div class="profile-hero">
+        <img class="avatar" src="{{ url_for('static', filename='images/profileepic.jpg') }}" alt="Profile image of John Emmanuel Billones Bien">
+        <div class="profile-summary"> 
+            <p class="eyebrow">STUDENT PROFILE</p>
+            <div class="profile-title-row">
+                <h1 id="profile-name">John Emmanuel Billones Bien</h1>
+                <span class="profile-badge">Student</span>
+            </div>
+            <p class="profile-meta">PUP · Computer Engineering</p>
+            <p class="lead">An aspiring web developer and musician who enjoys building projects and learning how data structures work.</p>
+            <p class="profile-presence"><span class="status-dot" aria-hidden="true"></span>Currently learning Flask and data structures</p>
+        </div>
+    </div>
+</section>
+
+<section class="profile-grid">
+    <article class="content-card about-card">
+        <h2>About me</h2>
+        <p>Im just a kid just a kid in the subdivision doing alright.</p>
+        <blockquote>“WORK HARD PLAY HARDER !!!”</blockquote>
+    </article>
+    <aside class="content-card details-card">
+        <h2>Academic details</h2>
+        <dl>
+            <div><dt>Course</dt><dd>Computer Engineering</dd></div>
+            <div><dt>Section</dt><dd>BsCPE 2-1</dd></div>
+            <div><dt>Subject</dt><dd>Data Structures and Algorithms</dd></div>
+            <div><dt>Goals</dt><dd>To perform at Philippine Arena</dd></div>
+        </dl>
+    </aside>
+</section>
+
+<section class="section skills-section">
+    <p class="eyebrow">MY TOOLKIT</p>
+    <h2>What I am currently improving</h2>
+    <div class="tag-list" aria-label="Skills">
+        <span>Python</span><span>Flask</span><span>HTML</span><span>CSS</span><span>JavaScript</span><span>Linked Lists</span><span>Stacks</span>
+    </div>
+</section>
+{% endblock %}

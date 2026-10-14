@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}Text Converter | Programming Works{% endblock %}
+
+{% block content %}
+<section class="tool-intro">
+    <p class="eyebrow">PROGRAMMING WORKS · STRINGS</p>
+    <h1>Uppercase converter</h1>
+    <p class="lead">Send text to Flask and receive its uppercase version.</p>
+</section>
+
+<section class="tool-layout">
+    <form class="tool-form content-card" action="{{ url_for('works') }}" method="post">
+        <label for="inputString">Text to convert</label>
+        <input type="text" id="inputString" name="inputString" value="{{ input_string }}" placeholder="Type a phrase…" required autofocus>
+        <button class="button" type="submit">Convert to uppercase</button>
+        {% if error %}<p class="form-message error" role="alert">{{ error }}</p>{% endif %}
+    </form>
+
+    <aside class="result-card text-result" aria-live="polite">
+        <p>RESULT</p>
+        {% if result is not none %}<strong>{{ result }}</strong>{% else %}<span>Your converted text appears here</span>{% endif %}
+    </aside>
+</section>
+
+<section class="section compact-section">
+    <div class="section-heading"><p class="eyebrow">MORE TO EXPLORE</p><h2>Other tools!</h2></div>
+    <div class="mini-links">
+        <a href="{{ url_for('circle_area') }}">Circle area <span>→</span></a>
+        <a href="{{ url_for('triangle_area') }}">Triangle area <span>→</span></a>
+        <a href="{{ url_for('linked_list') }}">Linked-list lab <span>→</span></a>
+        <a href="{{ url_for('stack') }}">Stack lab <span>→</span></a>
+    </div>
+</section>
+{% endblock %}

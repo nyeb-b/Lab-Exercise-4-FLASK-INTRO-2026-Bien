@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block title %}Linked List Lab | Programming Works{% endblock %}
+
+{% block content %}
+<section class="tool-intro">
+    <p class="eyebrow">PROGRAMMING WORKS · DATA STRUCTURES</p>
+    <h1>Linked-list lab</h1>
+    <p class="lead">Experiment with a singly linked list. Each card is a node that points to the next one.</p>
+</section>
+
+<section class="linked-list-layout">
+    <article class="content-card controls-card">
+        <h2>List controls</h2>
+        <form action="{{ url_for('linked_list') }}" method="post" class="linked-list-form">
+            <label for="value">Node value</label>
+            <input type="text" id="value" name="value" value="{{ submitted_value }}" maxlength="40" placeholder="e.g. Flask">
+            <div class="control-grid">
+                <button class="button" name="action" value="prepend" type="submit">Add first</button>
+                <button class="button" name="action" value="append" type="submit">Add last</button>
+                <button class="button button-subtle" name="action" value="find" type="submit">Find value</button>
+                <button class="button button-subtle" name="action" value="remove" type="submit">Remove value</button>
+                <button class="button button-subtle" name="action" value="pop" type="submit">Remove first</button>
+                <button class="button button-danger" name="action" value="clear" type="submit">Clear list</button>
+            </div>
+        </form>
+        <p class="hint">Values are saved only in this browser session.</p>
+    </article>
+
+    <section class="content-card visualizer-card" aria-live="polite">
+        <div class="list-heading">
+            <div><p class="eyebrow">CURRENT LIST</p><h2>{{ length }} {{ 'node' if length == 1 else 'nodes' }}</h2></div>
+            <span class="head-pill">HEAD</span>
+        </div>
+        {% if message %}<p class="form-message {{ message_type }}" role="status">{{ message }}</p>{% endif %}
+        {% if nodes %}
+            <div class="node-track" aria-label="Linked list nodes">
+                {% for node in nodes %}
+                    <div class="node-wrap">
+                        <div class="node"><span>{{ loop.index0 }}</span>{{ node }}</div>
+                        {% if not loop.last %}<span class="arrow" aria-hidden="true">→</span>{% endif %}
+                    </div>
+                {% endfor %}
+                <span class="null-node">NULL</span>
+            </div>
+        {% else %}
+            <div class="empty-list"><span>∅</span><p>The list is empty. Add a first node to begin.</p></div>
+        {% endif %}
+    </section>
+</section>
+{% endblock %}

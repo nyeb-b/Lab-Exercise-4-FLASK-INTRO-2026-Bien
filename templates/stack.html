@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %}Stack Lab | Programming Works{% endblock %}
+
+{% block content %}
+<section class="tool-intro">
+    <p class="eyebrow">PROGRAMMING WORKS · DATA STRUCTURES</p>
+    <h1>Stack lab</h1>
+    <p class="lead">Experiment with a stack, a linear data structure that follows the <strong>Last-In, First-Out (LIFO)</strong> principle.</p>
+</section>
+
+<section class="linked-list-layout">
+    <article class="content-card controls-card">
+        <h2>Stack controls</h2>
+        <form action="{{ url_for('stack') }}" method="post" class="linked-list-form">
+            <label for="value">Stack value</label>
+            <input type="text" id="value" name="value" value="{{ submitted_value }}" maxlength="40" placeholder="e.g. Flask">
+            <div class="control-grid">
+                <button class="button" name="action" value="push" type="submit">Push value</button>
+                <button class="button button-subtle" name="action" value="pop" type="submit">Pop top</button>
+                <button class="button button-subtle" name="action" value="peek" type="submit">Peek top</button>
+                <button class="button button-danger" name="action" value="clear" type="submit">Clear stack</button>
+            </div>
+        </form>
+        <p class="hint">Values are saved only in this browser session.</p>
+    </article>
+
+    <section class="content-card visualizer-card" aria-live="polite">
+        <div class="list-heading">
+            <div><p class="eyebrow">CURRENT STACK</p><h2>{{ length }} {{ 'value' if length == 1 else 'values' }}</h2></div>
+            <span class="head-pill">TOP</span>
+        </div>
+        {% if message %}<p class="form-message {{ message_type }}" role="status">{{ message }}</p>{% endif %}
+        {% if values %}
+            <div class="node-track" aria-label="Stack values, bottom to top">
+                {% for value in values %}
+                    <div class="node-wrap">
+                        <div class="node"><span>{% if loop.first and loop.last %}BOTTOM · TOP{% elif loop.first %}BOTTOM{% elif loop.last %}TOP{% else %}{{ loop.index0 }}{% endif %}</span>{{ value }}</div>
+                        {% if not loop.last %}<span class="arrow" aria-hidden="true">→</span>{% endif %}
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="empty-list"><span>∅</span><p>The stack is empty. Push a first value to begin.</p></div>
+        {% endif %}
+    </section>
+</section>
+{% endblock %}

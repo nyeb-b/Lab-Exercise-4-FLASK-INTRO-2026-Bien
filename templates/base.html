@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Jebie's Flask programming portfolio">
+    <title>{% block title %}Jebb Bien's Portfolio{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='site.css') }}">
+</head>
+<body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <header class="site-header">
+        <nav class="navbar" aria-label="Main navigation">
+            <a class="brand" href="{{ url_for('index') }}" aria-label="Jebie's Portfolio home">J<span>.</span></a>
+            <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="main-menu">Menu</button>
+            <div class="nav-links" id="main-menu">
+                <a class="{{ 'active' if request.endpoint == 'index' else '' }}" href="{{ url_for('index') }}">Home</a>
+                <a class="{{ 'active' if request.endpoint == 'profile' else '' }}" href="{{ url_for('profile') }}">Profile</a>
+                <a class="{{ 'active' if request.endpoint in ['works', 'circle_area', 'triangle_area', 'linked_list', 'stack'] else '' }}" href="{{ url_for('works') }}">Works</a>
+                <a class="{{ 'active' if request.endpoint == 'contact' else '' }}" href="{{ url_for('contact') }}">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <main id="main-content" class="site-main">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="site-footer">
+        <a href="{{ url_for('contact') }}">Contacts →</a>
+    </footer>
+    <script src="{{ url_for('static', filename='site.js') }}"></script>
+</body>
+</html>
